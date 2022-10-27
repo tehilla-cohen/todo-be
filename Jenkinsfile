@@ -24,7 +24,7 @@ pipeline {
             steps {
                 echo 'pushing back-end to dockerhub'
                 sh 'docker login -u tehilla2022 -p ilmtv98967'
-                sh 'docker push tehilla2022/todo-fe:latest'
+                sh 'docker push tehilla2022/todo-be:latest'
             }
         }
     }
