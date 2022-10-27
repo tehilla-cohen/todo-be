@@ -5,13 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building step'
-                sh 'DOCKER_BUILDKIT=1 docker build -t tehilla-cohen/todo-be:latest -f DockerfilePipeline --target builder .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t tehilla2022/todo-be:latest -f DockerfilePipeline --target builder .'
             }
         }
         stage('Delivery') {
             steps {
                 echo 'Delivery step'
-                sh 'DOCKER_BUILDKIT=1 docker build -t tehilla-cohen/todo-be:latest -f DockerfilePipeline --target delivery .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t tehilla2022/todo-be:latest -f DockerfilePipeline --target delivery .'
             }
         }
          stage('Cleanup') {
