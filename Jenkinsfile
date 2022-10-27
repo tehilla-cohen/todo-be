@@ -1,1 +1,31 @@
+pipeline {
+    agent any
 
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building step'
+                sh 'DOCKER_BUILDKIT=1 docker build -t tehilla-cohen/todo-be:latest -f DockerfilePipeline --target builder .'
+            }
+        }
+        stage('Delivery') {
+            steps {
+                echo 'Delivery step'
+                sh 'DOCKER_BUILDKIT=1 docker build -t tehilla-cohen/todo-be:latest -f DockerfilePipeline --target delivery .'
+            }
+        }
+         stage('Cleanup') {
+            steps {
+                echo 'Cleanup the system'
+                sh 'docker system prune -f'
+            }
+        }
+         stage('Push') {
+            steps {
+                echo 'pushing back-end to dockerhub'
+                sh 'docker login -u tehillacohen -p ilmTV98967'
+                sh 'docker push tehillacohen/todo-be:latest'
+            }
+        }
+    }
+}
