@@ -1,6 +1,6 @@
 FROM node:10-alpine as builder
-WORKDIR /usr/src/app
-COPY *.json /usr/src/app/
+WORKDIR /app
+COPY *.json /app/
 RUN npm install
 
 FROM node:14-alpine as delivery
